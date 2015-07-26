@@ -1,0 +1,12 @@
+﻿@model List<BlogViajes.EntityModels.ContentModel>
+<div class="clearfix single_sidebar">
+							<div class="popular_post">
+								<div class="sidebar_title"><h2>Lo mas leido!</h2></div>
+								<ul>
+                                @foreach (BlogViajes.EntityModels.ContentModel featured in Model)
+                                {
+                                  <li><a href="/Articulos/Ver/@featured.Id">@featured.Title. </a></li>  
+                                }									
+								</ul>
+							</div>
+							</div>

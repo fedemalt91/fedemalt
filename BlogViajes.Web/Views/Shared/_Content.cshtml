@@ -1,0 +1,32 @@
+﻿@model List<BlogViajes.EntityModels.ContentModel>
+<div class="clearfix content">
+						<div class="content_title"><h2>últimas entradas</h2></div>
+						
+                        @foreach (BlogViajes.EntityModels.ContentModel content in Model)
+                        {
+                          <div class="clearfix single_content">
+							<div class="clearfix post_date floatleft">
+								<div class="date">
+									<h3>@content.DatePosted.Day</h3>
+									<p>@content.DatePosted.ToString("MMM")</p>
+								</div>
+							</div>
+							<div class="clearfix post_detail">
+								<h2><a href="/Articulos/Ver/@content.Id">@content.Title</a></h2>
+								<div class="clearfix post-meta">
+									<p><span><i class="fa fa-clock-o" style="padding-right:3px"></i>@content.DatePosted.ToString("dd MMM yyyy")</span> <span><i class="fa fa-comment"></i> @content.Comments.Count comentarios</span> <span><i class="fa fa-folder"></i> @content.Categories[0].Name</span></p>
+								</div>
+								<div class="clearfix post_excerpt">
+									<img src=@Url.Action("GetImage","Articulos",new {Id = content.Id}) alt="@content.Title"/>
+									<p>@Html.Raw(content.Content.Substring(0,content.Resume)) ... </p>
+								</div>
+								
+							</div>
+						</div>  
+                        }
+						
+						
+											
+					</div>
+					
+					

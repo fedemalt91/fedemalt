@@ -1,0 +1,10 @@
+﻿@model List<BlogViajes.EntityModels.CategoryModel>
+<div class="clearfix single_sidebar category_items">
+							<h2>Categories</h2>
+							<ul>
+                             @foreach (BlogViajes.EntityModels.CategoryModel cate in Model)
+                             {
+                                <li class="cat-item"><a href="/Articulos/ListaCategoria/@cate.Id">@cate.Name</a>(Ver)</li> 
+                             }
+							</ul>
+						</div>

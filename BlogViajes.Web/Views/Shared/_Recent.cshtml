@@ -1,0 +1,11 @@
+﻿@model List<BlogViajes.EntityModels.ContentModel>
+<div class="clearfix single_sidebar">
+							<h2>Articulos recientes!</h2>
+							<ul>
+                            @foreach (BlogViajes.EntityModels.ContentModel recent in Model)
+                            {
+                                <li><a href="/Articulos/Ver/@recent.Id">@recent.Title. </a></li>  
+                            }
+								
+							</ul>
+						</div>

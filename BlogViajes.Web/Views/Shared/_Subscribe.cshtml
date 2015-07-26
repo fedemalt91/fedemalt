@@ -1,0 +1,16 @@
+﻿<div class="clearfix newsletter">
+                    @if (Session["registered"] == null  || (bool)Session["registered"] != true)
+                    {
+                       using (Html.BeginForm("Subscribe", "Users", FormMethod.Post))   
+                        {
+							<h2>Subscribite a las actualizaciones!</h2>
+							<input type="email" placeholder="Email" id="mce-EMAIL" name="Email"/>
+							<input type="submit" value="Submit" id="mc-embedded-subscribe"/>
+                        }
+                    }
+                    else
+                    {
+                        <h2>Ya te has subscripto!</h2>
+                    }
+						
+					</div>

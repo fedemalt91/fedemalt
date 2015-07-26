@@ -1,0 +1,7 @@
+﻿@model List<String>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="/Articulos/Destinos/@item">@item</a></li>
+    }
+</ul>

@@ -1,0 +1,39 @@
+﻿@model BlogViajes.Web.Models.ArticulosListModel
+@{
+   
+}
+<section id="content_area">
+			<div class="clearfix wrapper main_content_area">
+			
+				<div class="clearfix main_content floatleft">
+				
+					@Html.Partial("_Content", Model.ContentList)
+					
+					<div class="pagination">
+						<nav>
+							<ul>
+                            <li><a href="/Articulos/Lista/1"> << </a></li>
+                            @for (int i = (Model.ActualPage - 3); i <= (Model.ActualPage + 3); i++)
+                            {
+                                if (i > 0 && i <= Model.AmtPages)
+                                {
+                                    <li><a href="/Articulos/@TempData["Action"]/@i"> @i </a></li>
+                                }
+
+                            }								
+								<li><a href="/Articulos/lista/@Model.AmtPages"> >> </a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="clearfix sidebar_container floatright">
+				
+					@Html.Partial("_Subscribe")
+					<div class="clearfix sidebar">
+						@Html.Partial("_Featured", Model.FeatureList)
+						@Html.Partial("_Categories", Model.Categories)
+						@Html.Partial("_Recent", Model.RecentList)
+					</div>
+				</div>
+			</div>
+		</section>
