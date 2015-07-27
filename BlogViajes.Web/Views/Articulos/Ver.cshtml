@@ -1,0 +1,24 @@
+﻿@model BlogViajes.Web.Models.ArticulosVerModel
+@{
+    ViewBag.Title = "Viajero por definición";
+}
+<section id="content_area">
+			<div class="clearfix wrapper main_content_area">
+			
+				<div class="clearfix main_content floatleft">
+				
+					@Html.Partial("_ContentView", Model.Content)
+					
+					
+				</div>
+				<div class="clearfix sidebar_container floatright">
+				
+					@Html.Partial("_Subscribe")
+					<div class="clearfix sidebar">
+						@Html.Partial("_Featured", Model.FeatureList)
+						@Html.Partial("_Categories", Model.Categories)
+						@Html.Partial("_Recent", Model.RecentList)
+					</div>
+				</div>
+			</div>
+		</section>

@@ -15,7 +15,28 @@ namespace BlogViajes.Web.Models
         private int _amtPages;
         public int AmtPages { get { return (_amtPages == 0 ? ((ContentList.Count % 10) + 1) : _amtPages); } set { _amtPages = value; } }
         public List<CategoryModel> Categories { get; set; }
+        public string ActionToGo { get; set; }
+    }
 
+    public class ArticulosVerModel
+    {
+        public ContentModel Content { get; set; }
+        public List<ContentModel> FeatureList { get; set; }
+        public List<ContentModel> RecentList { get; set; }
+        public List<CategoryModel> Categories { get; set; }
+    }
+
+    public class GuiaListModel
+    {
+        public List<ContentModel> ContentList { get; set; }
+        public List<ContentModel> FeatureList { get; set; }
+        public List<ContentModel> RecentList { get; set; }
+        public int ActualPage { get; set; }
+        private int _amtPages;
+        public int AmtPages { get { return (_amtPages == 0 ? ((ContentList.Count % 10) + 1) : _amtPages); } set { _amtPages = value; } }
+        public List<CategoryModel> Categories { get; set; }
+        public int City { get; set; }
+        public string ActionToGo { get; set; }
 
     }
 }

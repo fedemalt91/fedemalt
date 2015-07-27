@@ -28,13 +28,15 @@ namespace BlogViajes.Repository
 
         public List<String> GetNamesByType(CategoryType categoryType)
         {
-            return dbContext.Categories.Where(x => x.Type == categoryType.ToString()).Select(x => x.Name).ToList();
+            string aux = categoryType.ToString();
+            return dbContext.Categories.Where(x => x.Type == aux).Select(x => x.Name).ToList();
         }
 
 
         public List<CategoryModel> GetByType(CategoryType categoryType)
         {
-            return dbContext.Categories.Where(x => x.Type == categoryType.ToString()).ToList();
+            string aux = categoryType.ToString();
+            return dbContext.Categories.Where(x => x.Type == aux).ToList();
         }
 
         public CategoryModel GetByName(string p)

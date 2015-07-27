@@ -12,6 +12,7 @@ namespace BlogViajes.EntityModels
         public string Name { get; set; }
         public bool IsFather { get; set; }
         public CategoryModel Father { get; set; }
+        public List<ContentModel> Contents { get; set; }
         public string Type { get; set; }
     }
 

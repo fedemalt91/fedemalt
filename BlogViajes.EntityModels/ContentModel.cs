@@ -13,6 +13,7 @@ namespace BlogViajes.EntityModels
         public string Title { get; set; }
         public List<CommentModel> Comments { get; set; }
         public List<CategoryModel> Categories { get; set; }
+        public UserModel User { get; set; }
         public DateTime DatePosted { get; set; }
         public Boolean IsActive { get; set; }
         public Boolean IsFeatured { get; set; }

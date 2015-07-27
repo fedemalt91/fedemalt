@@ -51,15 +51,19 @@ namespace BlogViajes.Repository
 
         public List<ContentModel> GetRecent()
         {
-            return dbContext.Contents.OrderBy(x=>x.DatePosted).Take(5).ToList();
+            return dbContext.Contents.OrderBy(x => x.DatePosted).Take(5).ToList();
         }
 
         public ContentModel Get(int Id)
         {
             return dbContext.Contents.Include("Comments").Include("Categories").FirstOrDefault(x => x.Id == Id);
         }
-        public Int32 GetCount()
+        public Int32 GetCount(int? categoryId)
         {
+            if (categoryId != null)
+            {
+                return dbContext.Contents.Where(x => x.Categories.Any(y => y.Id == categoryId)).Count();
+            }
             return dbContext.Contents.Count();
         }
 

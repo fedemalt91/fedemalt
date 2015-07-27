@@ -23,7 +23,7 @@ namespace BlogViajes.EntityModels
         public DbSet<CommentModel> Comments { get; set; }
         public DbSet<ContentModel> Contents { get; set; }
         public BlogViajesContext(string connectionString)
-            : base("DefaultConnection")
+            : base("DefConnection")
         {
 
         }

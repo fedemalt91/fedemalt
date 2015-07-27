@@ -1,4 +1,4 @@
-﻿@model BlogViajes.Web.Models.ArticulosListModel
+﻿@model BlogViajes.Web.Models.GuiaListModel
 @{
    
 }
@@ -12,16 +12,16 @@
 					<div class="pagination">
 						<nav>
 							<ul>
-                            <li><a href="/Articulos/@Model.ActionToGo/1"> << </a></li>
+                            <li><a href="/Articulos/@Model.ActionToGo/1/@Model.City"> << </a></li>
                             @for (int i = (Model.ActualPage - 3); i <= (Model.ActualPage + 3); i++)
                             {
                                 if (i > 0 && i <= Model.AmtPages)
                                 {
-                                    <li><a href="/Articulos/@Model.ActionToGo/@i"> @i </a></li>
+                                    <li><a href="/Articulos/@Model.ActionToGo/@i/@Model.City"> @i </a></li>
                                 }
 
                             }								
-								<li><a href="/Articulos/@Model.ActionToGo/@Model.AmtPages"> >> </a></li>
+								<li><a href="/Articulos/@Model.ActionToGo/@Model.AmtPages/@Model.City"> >> </a></li>
 							</ul>
 						</nav>
 					</div>

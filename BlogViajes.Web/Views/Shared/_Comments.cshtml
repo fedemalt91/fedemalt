@@ -1,0 +1,18 @@
+﻿@model List<BlogViajes.EntityModels.CommentModel>
+@if (Model != null && Model.Count != 0)
+{
+    <ul id="comments">
+        @foreach (var item in Model)
+        {
+            <li class="cmmnt">
+                <div>
+                    <header>Comentó: <span class="userlink">@item.PostingUser.UserName</span><span class="pubdate">Comentó el: @item.DatePosted.ToString("dd MMM yyyy")</span></header>
+                    <p>
+                        @item.Comment</p>
+                </div>
+                 @Html.Partial("_CommentsReplies", item.ChildComments)
+            </li>
+           
+        }
+    </ul>
+}
