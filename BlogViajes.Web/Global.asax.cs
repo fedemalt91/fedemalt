@@ -27,5 +27,11 @@ namespace BlogViajes.Web
            // Database.SetInitializer<BlogViajesContext>(new DropCreateDatabaseIfModelChanges<BlogViajesContext>());
             
         }
+
+
+        protected void Session_Start()
+        {
+            Session["registered"] = false;
+        }
     }
 }

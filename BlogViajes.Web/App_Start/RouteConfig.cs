@@ -13,6 +13,26 @@ namespace BlogViajes.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+               name: "sitemap.xml",
+               url: "sitemap.xml",
+               defaults: new { controller = "Servicio", action = "SitemapXml" },
+               namespaces: new[] { "BlogViajes.Web.Controllers" }
+           );
+
+            routes.MapRoute(
+                name: "robots.txt",
+                url: "robots.txt",
+                defaults: new { controller = "Servicio", action = "RobotsText" },
+                namespaces: new[] { "BlogViajes.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "googleid.html",
+                url: "google{id}.html",
+                defaults: new { controller = "Servicio", action = "Google" },
+                namespaces: new[] { "BlogViajes.Web.Controllers" }
+            );
            
 
             routes.MapRoute(
@@ -20,6 +40,12 @@ namespace BlogViajes.Web
                 url: "Articulos/Lista/{Page}/{Category}",
                 defaults: new { controller = "Articulos", action = "Lista", Page = UrlParameter.Optional, Category = UrlParameter.Optional  }
             );
+
+            routes.MapRoute(
+               name: "Destinos",
+               url: "Articulos/Destinos/{Page}/{CategoryId}",
+               defaults: new { controller = "Articulos", action = "Destinos"}
+           );
 
             routes.MapRoute(
                name: "Default",

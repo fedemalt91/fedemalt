@@ -5,12 +5,19 @@
         @foreach (var item in Model)
         {
             <li class="cmmnt">
-                <div class="cmmnt-content">
-                    <header>Respondió: <span class="userlink">@item.PostingUser.UserName</span><span class="pubdate">Respondió el: @item.DatePosted.ToString("dd MMM yyyy")</span></header>
+               <div class="cmmnt-content" data-cmmtId="@item.Id">
+                    <header> 
+                    <span class="userlink">@item.PostingUser.UserName </span>
+                    <span class="pubdate">respondió el  @item.DatePosted.ToString("dd MMM yyyy")</span>
+                    <span class="cmmt-answerLink" id="cmmt-@item.Id"  onclick="AnswerComment('cmmt-@item.Id')">Responder</span>
+                    </header>
                     <p>
                         @item.Comment</p>
                 </div>
-                 @Html.Partial("_CommentsReplies", item.ChildComments)
+                @if (item.ChildComments != null && item.ChildComments.Count != 0)
+                {
+                    @Html.Partial("_CommentsReplies", item.ChildComments) 
+                }
             </li>
            
         }

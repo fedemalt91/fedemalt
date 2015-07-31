@@ -1,8 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@RenderSection("meta")
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet'
         type='text/css'>
@@ -21,13 +20,15 @@
 			<div class="wrapper header">
 				<div class="clearfix header_top">
 					<div class="clearfix logo floatleft">
-						<a href=""><h1><span>Viajero</span> por definición!</h1></a>
+						<a href=""><h1><span>Viajero</span> X definición!</h1></a>
 					</div>
 					<div class="clearfix search floatright">
-						<form>
-							<input type="text" placeholder="Search"/>
+                    @using (Html.BeginForm("Search", "Servicio", FormMethod.Post))
+                    {
+					        <input type="text"  id="searchCriteia" name="searchCriteria" placeholder="Buscar"/>
 							<input type="submit" />
-						</form>
+						
+                    }
 					</div>
 				</div>
 				<div class="header_bottom">
@@ -37,11 +38,11 @@
 							<li><a href="/Articulos/VuelosBaratos">Transporte al costo mas bajo</a></li>
 							<li><a href="/Articulos/Experiencias">Sus experiencias</a></li>
                             <li><a href="/Articulos/Tips">Tips para planificar tu viaje</a></li>
-                            <li id="dropdown"><a href="/Articulos/Destinos">Qué ver en cada destino?</a>
+                            <li id="dropdown"><a>Qué ver en cada destino?</a>
 								  @Html.Action("LocationCategory", "Articulos", null)
 							</li>
 							<li><a href="/Servicio/Info">Más sobre nosotros</a></li>
-							<li><a href="/Servicio/Contato">Contacto</a></li>
+							<li><a href="/Servicio/Contacto">Contacto</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -52,12 +53,12 @@
 			<div class="clearfix wrapper footer_top">
 				<div class="clearfix footer_top_container">
 					<div class="clearfix single_footer_top floatleft">
-						<h2>From Twitter</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="">Lorem Ipsum has been the industry</a> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						<h2><a href="/Servicio/Info">Nosotros</a></h2>
+						<p>Un lugar para aprender como planear y ejecutar tu viaje, enterarte todos los tips y consejos para bajar los costos y compartir con otros, tus experiencias.</p>
 					</div>
 					<div class="clearfix single_footer_top floatleft">
-						<h2>Recent Post</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy <a href="">Lorem Ipsum has been the industry</a> text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						
+						<p><a href="/Servicio/Info">Términos y condiciones</a></p>
 					</div>
 					<div class="clearfix single_footer_top floatleft">
 						<h2>Leé lo que mas te interesa!</h2>
@@ -66,9 +67,8 @@
 							<li><a href="/Articulos/VuelosBaratos">Transporte al costo mas bajo</a></li>
 							<li><a href="/Articulos/Experiencias">Sus experiencias</a></li>
                             <li><a href="/Articulos/Tips">Tips para planificar tu viaje</a></li>
-							<li><a href="/Articulos/Destinos">Qué ver en cada destino?</a></li>
 							<li><a href="/Servicio/Info">Más sobre nosotros</a></li>
-							<li><a href="/Servicio/Contato">Contacto</a></li>
+							<li><a href="/Servicio/Contacto">Contacto</a></li>
 						</ul>
 					</div>
 				</div>
@@ -79,9 +79,9 @@
 				
 				<div class="clearfix social floatcenter">
 					<ul>
-						<li><a class="tooltip" title="Facebook" href=""><i class="fa fa-facebook-square"></i></a></li>
-						<li><a class="tooltip" title="Twitter" href=""><i class="fa fa-twitter-square"></i></a></li>
-						<li><a class="tooltip" title="Google+" href=""><i class="fa fa-google-plus-square"></i></a></li>
+						<li><a class="tooltip" title="Facebook" href="https://www.facebook.com/ViajeroXDefinicion"><i class="fa fa-facebook-square"></i></a></li>
+						<li><a class="tooltip" title="Twitter" href="https://twitter.com/ViajeroXDef"><i class="fa fa-twitter-square"></i></a></li>
+						<li><a class="tooltip" title="Google+" href="https://plus.google.com/u/0/b/117763198009445754155/117763198009445754155/about"><i class="fa fa-google-plus-square"></i></a></li>
 												
 					</ul>
 				</div>
@@ -113,5 +113,7 @@
         });
     </script>
     <script type="text/javascript" src="~/Scripts/Custom/placeholder_support_IE.js"></script>
+    <script src="~/Scripts/Custom/Custom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ namespace BlogViajes.EntityModels
         public Boolean IsActive { get; set; }
         public List<CommentModel> ChildComments { get; set; }
         public UserModel PostingUser { get; set; }
+        public bool IsFatherNode { get; set; }
 
     }
 

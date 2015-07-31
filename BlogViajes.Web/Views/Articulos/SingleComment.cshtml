@@ -1,0 +1,12 @@
+﻿@model BlogViajes.EntityModels.CommentModel
+<li class="cmmnt">
+                <div class="cmmnt-content" data-cmmtId="@Model.Id">
+                    <header><span class="userlink">@Model.PostingUser.UserName</span><span class="pubdate"> comentó el  @Model.DatePosted.ToString("dd MMM yyyy")</span><span class="cmmt-answerLink" id="cmmt-@Model.Id"  onclick="AnswerComment('cmmt-@Model.Id')">Responder</span></header>
+                    <p>
+                        @Model.Comment</p>
+                </div>
+                @if (Model.ChildComments != null && Model.ChildComments.Count > 0)
+                {
+                    @Html.Partial("_CommentsReplies", Model.ChildComments)
+                }
+            </li>

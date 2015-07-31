@@ -1,6 +1,15 @@
 ﻿@model BlogViajes.Web.Models.GuiaListModel
 @{
-   
+    ViewBag.Title = "Viajero X Definición : Guias sobre " + TempData["NombreCategoria"];
+    ViewBag.description = "Una guia de los mejores lugares y los mas importantes a tener en cuenta cuando esten de vaije por " + TempData["NombreCategoria"];
+    ViewBag.Keywords = "Viajes, Viajar, Viajando, Ciudad, Mundo, Atracciones, Lugares, " + TempData["NombreCategoria"];
+    }
+@section meta {
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="ViewBag.Keywords" />
+    <link rel="canonical" href="@Url.Action(Model.ActionToGo, "Articulos", new RouteValueDictionary(new { Page = Model.ActualPage, CategoryId = Model.City}), Uri.UriSchemeHttps, System.Configuration.ConfigurationManager.AppSettings["HostName"])" />
 }
 <section id="content_area">
 			<div class="clearfix wrapper main_content_area">

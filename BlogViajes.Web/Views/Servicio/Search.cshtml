@@ -1,15 +1,13 @@
 ﻿@model BlogViajes.Web.Models.ArticulosListModel
 @{
-    ViewBag.Title = "Viajero X Definición : " + TempData["NombreCategoria"];
-    ViewBag.description = "Lee sobre las mejores estrategias para armar tus viajes por el mundo "; 
-    ViewBag.Keywords = "Viajero, Definición, Viajes, Viajar, Viajando, Ciudad, Mundo, Atracciones, Lugares, Ciudades, Vuelos, Pasajes, Baratos, Traslados, " + TempData["NombreCategoria"];
+    ViewBag.Title = "Viajero X Definición: Busqueda";
+    ViewBag.description = "Lee sobre las mejores estrategias para armar tus viajes por el mundo ";
+    ViewBag.Keywords = "Viajes, Viajar, Viajando, Ciudad, Mundo, Atracciones, Lugares, Ciudades, Vuelos, Pasajes, Baratos, Traslados";
     }
 @section meta {
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@ViewBag.Description" />
     <meta name="keywords" content="@ViewBag.Keywords" />
-    <link rel="canonical" href="@Url.Action(Model.ActionToGo, "Articulos", new RouteValueDictionary(new { Page = Model.ActualPage}), Uri.UriSchemeHttps, System.Configuration.ConfigurationManager.AppSettings["HostName"])" />
+    <link rel="canonical" href="@Url.Action("Search", "Servicio", new RouteValueDictionary(new { Page = Model.ActualPage , SearchCriteria = Model.ActionToGo}), Uri.UriSchemeHttps, System.Configuration.ConfigurationManager.AppSettings["HostName"])" />
 }
 <section id="content_area">
 			<div class="clearfix wrapper main_content_area">
@@ -21,16 +19,16 @@
 					<div class="pagination">
 						<nav>
 							<ul>
-                            <li><a href="/Articulos/@Model.ActionToGo/1"> << </a></li>
+                            <li><a href="/Servicio/1/@Model.ActionToGo"> << </a></li>
                             @for (int i = (Model.ActualPage - 3); i <= (Model.ActualPage + 3); i++)
                             {
                                 if (i > 0 && i <= Model.AmtPages)
                                 {
-                                    <li><a href="/Articulos/@Model.ActionToGo/@i"> @i </a></li>
+                                    <li><a href="/Servicio/Search/@i/@Model.ActionToGo"> @i </a></li>
                                 }
 
                             }								
-								<li><a href="/Articulos/@Model.ActionToGo/@Model.AmtPages"> >> </a></li>
+								<li><a href="/Servicio/Search/@Model.AmtPages/@Model.ActionToGo"> >> </a></li>
 							</ul>
 						</nav>
 					</div>

@@ -43,5 +43,11 @@ namespace BlogViajes.Repository
         {
             return dbContext.Categories.FirstOrDefault(x => x.Name == p);
         }
+
+        public void Save(CategoryModel model)
+        {
+            dbContext.Categories.Add(model);
+            dbContext.SaveChanges();
+        }
     }
 }

@@ -8,7 +8,7 @@
             </div>
             <div class="single_work_page clearfix">
                 <div class="work_single_page_feature">
-                    <img src=@Url.Action("GetImage", "Articulos", new { Id = Model.Id }) alt="@Model.Title"/></div>
+                    <img src=@Url.Action("GetFullImage", "Articulos", new { Id = Model.Id }) alt="@Model.Title"/></div>
                 <div class="work_meta clearfix">
                     <p class="floatleft">
                         Posteado el: <span>@Model.DatePosted.ToString("dd MMM yyyy")</span> Posteado por:
@@ -26,6 +26,22 @@
                 {
                     <div id="container-comment">
                         @Html.Partial("_Comments", Model.Comments)
+                        <span style='width: 70%;' id='responseForm'><span id="result"></span>
+                            @using (Ajax.BeginForm("PostToContent", "Articulos", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "comments", InsertionMode = InsertionMode.InsertAfter }))
+                            {
+                                <input type="hidden" name="ContentId" id="ContentId" value="@Model.Id" />
+                                <input style="display: block" name="user" id="user" type="text" value="Nombre" onfocus='nameGainFocus($(this))'
+                                    onfocusout='nameLostFocus($(this))' onblur='nameLostFocus($(this))' />
+                                <input style="display: block" name="email" id="email" type="text" value="E-Mail" onfocus='emailGainFocus($(this))'
+                                    onfocusout='emailLostFocus($(this))' onblur='emailLostFocus($(this))' />
+                                <textarea id="texto" name="texto" onfocus='textGainFocus($(this))' onfocusout='textLostFocus($(this))'
+                                    onblur='textLostFocus($(this))' style='width: 70%; display: block;'>
+Escriba su respuesta...
+</textarea>
+                                <span>
+                                    <input type="submit" value="Enviar" /></span>
+                            }
+                        </span>
                     </div>
                 }
             </div>

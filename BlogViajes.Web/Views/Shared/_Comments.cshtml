@@ -2,17 +2,32 @@
 @if (Model != null && Model.Count != 0)
 {
     <ul id="comments">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(x => x.IsFatherNode))
         {
             <li class="cmmnt">
-                <div>
-                    <header>Comentó: <span class="userlink">@item.PostingUser.UserName</span><span class="pubdate">Comentó el: @item.DatePosted.ToString("dd MMM yyyy")</span></header>
+                <div class="cmmnt-content" data-cmmtId="@item.Id">
+                    <header><span class="userlink">@item.PostingUser.UserName</span><span class="pubdate"> comentó el  @item.DatePosted.ToString("dd MMM yyyy")</span><span class="cmmt-answerLink" id="cmmt-@item.Id"  onclick="AnswerComment('cmmt-@item.Id')">Responder</span></header>
                     <p>
                         @item.Comment</p>
                 </div>
-                 @Html.Partial("_CommentsReplies", item.ChildComments)
+                @if (item.ChildComments != null && item.ChildComments.Count > 0)
+                {
+                    @Html.Partial("_CommentsReplies", item.ChildComments)
+                }
             </li>
            
         }
     </ul>
 }
+<span style='width: 70%; display: none;' id='sectionResponse'>
+    <br />
+    <input style="display: block" id="userName" type="text" value="Nombre" onfocus='nameGainFocus($(this))'
+        onfocusout='nameLostFocus($(this))' onblur='nameLostFocus($(this))' />
+    <input style="display: block" id="userEmail" type="text" value="E-Mail" onfocus='emailGainFocus($(this))'
+        onfocusout='emailLostFocus($(this))' onblur='emailLostFocus($(this))' />
+    <textarea id="userComment" onfocus='textGainFocus($(this))' onfocusout='textLostFocus($(this))'
+        onblur='textLostFocus($(this))' style='width: 70%; display: block;'>
+Escriba su respuesta...
+</textarea>
+    <span id='sendResponse' style="display: block" onclick='sendResponse($(this))'>Enviar</span>
+</span>

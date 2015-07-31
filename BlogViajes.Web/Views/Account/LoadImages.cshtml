@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "LoadImages";
+}
+
+@section meta {}
+
+
+    @using (Html.BeginForm("LoadImage", "Account", FormMethod.Post, 
+                            new { enctype = "multipart/form-data" }))
+{
+        <input type="text" name="contentId" id="contentId" value="@Model"  />
+    <label for="file">full image:</label> 
+    <input type="file" name="fullfile" id="fullfile" style="width: 100%;" /> 
+        
+        <label for="file">Small image:</label> 
+    <input type="file" name="smallfile" id="smallfile" style="width: 100%;" /> 
+    <input type="submit" value="Upload" class="submit" /> 
+}

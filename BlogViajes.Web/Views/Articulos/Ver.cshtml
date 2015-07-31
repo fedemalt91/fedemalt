@@ -1,7 +1,15 @@
 ﻿@model BlogViajes.Web.Models.ArticulosVerModel
 @{
-    ViewBag.Title = "Viajero por definición";
+    ViewBag.Title = Model.Content.Title;
+    ViewBag.description = Model.Content.Resume;
+    ViewBag.Keywords = "Viajes, Viajar, Viajando, Ciudad, Mundo, Atracciones, Lugares, Ciudades, Vuelos, Pasajes, Baratos, Traslados";
+    }
+@section meta {
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <link rel="canonical" href="@Url.Action("Ver", "Articulos", new RouteValueDictionary(new { Id = Model.Content.Id}), Uri.UriSchemeHttps, System.Configuration.ConfigurationManager.AppSettings["HostName"])" />
 }
+<input type="hidden" value="@Model.Content.Id" id ="contentId"/>
 <section id="content_area">
 			<div class="clearfix wrapper main_content_area">
 			
